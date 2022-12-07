@@ -20,15 +20,15 @@ numPages = pdfReader.numPages
 # splittedData = data.split() 
 # splittedData2 = data2.split() 
 
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="root",
-  password="",
-  database="test"
-)
-mycursor = mydb.cursor()
+# mydb = mysql.connector.connect(
+#   host="localhost",
+#   user="root",
+#   password="",
+#   database="test"
+# )
+# mycursor = mydb.cursor()
 
-sql = "INSERT INTO currency_data (currency, import_price, export_price) VALUES (%s, %s, %s)"
+# sql = "INSERT INTO currency_data (currency, import_price, export_price) VALUES (%s, %s, %s)"
 combined = [] #splittedData #+ splittedData2
 if numPages > 0 : 
    j=0
@@ -65,10 +65,10 @@ if numPages > 0 :
             printData = currency + ' Import : ' + combined[i+4] + ' Export : ' + combined[i+5]
             increment = 6
          print(printData)
-         if len(import_price) > 0 and len(export_price) > 0 :
-            val = (currency, import_price, export_price)
-            mycursor.execute(sql, val)
-            mydb.commit()
+         # if len(import_price) > 0 and len(export_price) > 0 :
+         #    val = (currency, import_price, export_price)
+         #    mycursor.execute(sql, val)
+         #    mydb.commit()
          i+=increment
       else:
          i+=1
