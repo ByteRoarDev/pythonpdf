@@ -1,9 +1,14 @@
+import pytesseract
 from pdf2image import convert_from_path
-pdfs = r"./data/csnt93-2022.pdf"
-pages = convert_from_path(pdfs, 350)
+import glob
 
-i = 1
-for page in pages:
-   image_name = "Page_" + str(i) + ".jpg"  
-   page.save(image_name, "JPEG")
-   i = i+1
+pdfs = glob.glob("./data/csnt85-2022.pdf")
+
+for pdf_path in pdfs:
+    pages = convert_from_path(pdf_path, 500)
+
+    for pageNum,imgBlob in enumerate(pages):
+        text = pytesseract.image_to_string(imgBlob,lang='eng')
+
+        with open(f'{pdf_path[:-4]}_page{pageNum}.txt', 'w') as the_file:
+            the_file.write(text)

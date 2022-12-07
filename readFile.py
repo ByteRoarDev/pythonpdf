@@ -3,7 +3,7 @@ import re
 import mysql.connector
 
 
-pdfFileObj = open('./data/csnt95-2022.pdf', 'rb')
+pdfFileObj = open('./data/csnt02-2022.pdf', 'rb')
   
 # creating a pdf reader object
 pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
